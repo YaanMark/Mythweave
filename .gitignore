@@ -1,0 +1,56 @@
+# Dependencies & builds
+node_modules/
+.dist/
+.dist-*/
+build/
+.dist/
+.dist-*/
+.turbo/
+.vite/
+*.tsbuildinfo
+.next/
+out/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*.crt
+credentials*.json
+secrets/
+.npmrc
+
+# Docker & DB data
+pgdata/
+.docker-data/
+*.sqlite
+*.db
+*.sql.gz
+backups/
+uploads/
+storage/
+
+# Test & coverage
+coverage/
+playwright-report/
+test-results/
+.nyc_output/
+
+# Logs & temp
+*.log
+logs/
+*.tmp
+.cache/
+
+# System & editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
