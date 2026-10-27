@@ -9,7 +9,7 @@
     "lint": "pnpm -r lint",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "prepare": "husky install",
+    "prepare": "npx husky install",
     "precommit": "lint-staged"
   },
   "devDependencies": {
