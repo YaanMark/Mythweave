@@ -2,9 +2,7 @@
   "name": "mythweave",
   "private": true,
   "version": "0.1.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "dev": "pnpm -r dev",
     "build": "pnpm -r build",
@@ -13,5 +11,10 @@
     "typecheck": "pnpm -r typecheck",
     "prepare": "husky install",
     "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "drizzle-kit": "^0.21.0"
   }
 }
