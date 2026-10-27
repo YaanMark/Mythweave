@@ -10,7 +10,10 @@
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "prepare": "npx husky install",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "npm run lint"
+  }
   },
   "devDependencies": {
     "husky": "^9.0.0",
