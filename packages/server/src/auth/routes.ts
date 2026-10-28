@@ -3,7 +3,7 @@ import { db } from '../db/index';
 import { users, sessions } from '../db/schema';
 import { z } from 'zod';
 import { randomBytes } from 'crypto';
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 
 // Zod schemas
 const RegisterSchema = z.object({
@@ -25,7 +25,7 @@ export async function registerAuthRoutes(app: FastifyInstance) {
     if (existing.length) {
       return reply.status(409).send({ error: 'Email already in use' });
     }
-    const passwordHash = await argon2.hash(parsed.password);
+    const passwordHash = await bcrypt.hash(parsed.password, 10);
     const newUser = await db
       .insert(users)
       .values({
@@ -47,7 +47,7 @@ export async function registerAuthRoutes(app: FastifyInstance) {
       // generic error to avoid enumeration
       return reply.status(401).send({ error: 'Invalid credentials' });
     }
-    const valid = await argon2.verify(user[0].passwordHash, parsed.password);
+    const valid = await bcrypt.compare(parsed.password, user[0].passwordHash);
     if (!valid) {
       return reply.status(401).send({ error: 'Invalid credentials' });
     }
