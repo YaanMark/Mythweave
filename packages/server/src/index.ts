@@ -2,10 +2,17 @@
 import Fastify from 'fastify';
 import wsPlugin from '@fastify/websocket';
 import { z } from 'zod';
+import { registerAuth } from './auth/auth';
+import { registerAuthRoutes } from './auth/routes';
+import { loadUser } from './auth/loadUser';
 
 const fastify = Fastify({ logger: true });
 
-fastify.register(wsPlugin);
+// Register authentication (cookies, session, csrf) and load user middleware
+registerAuth(fastify);
+loadUser(fastify);
+// Register auth routes (register, login, etc.)
+registerAuthRoutes(fastify);
 
 // Simple schema for joining a room (for now)
 const JoinRoomSchema = z.object({
