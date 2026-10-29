@@ -6,13 +6,13 @@ import fastifyCsrf from '@fastify/csrf-protection';
 export async function registerAuth(app: fastify) {
   // Cookies (encrypted)
   await app.register(fastifyCookie, {
-    secret: process.env.COOKIE_SECRET ?? 'change-me', // should be 32+ chars
+    secret: process.env.COOKIE_SECRET ?? 'change-me-please-please-change-me-32chars!!', // should be 32+ chars
   });
 
   // Sessions stored in DB – placeholder, will use Drizzle DB plugin later
   await app.register(fastifySession, {
     cookieName: 'sid',
-    secret: process.env.SESSION_SECRET ?? 'another-change-me',
+    secret: process.env.SESSION_SECRET ?? 'change-me-please-please-change-me-32chars!!',
     cookie: {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
